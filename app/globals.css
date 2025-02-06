@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark text-light/95;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-serif;
+  }
+
+  .container {
+    @apply xl:!max-w-7xl;
+    /* background-color: #ffffff14;
+    background-color: rgb(255, 255, 255, .03); */
+  }
+
+  .anim-pop {
+    animation: 0.6s pop;
+    animation-fill-mode: forwards;
+    background-color: #ffffff0f;
+  }
+
+  @keyframes pop {
+    0% {
+      filter: brightness(0) invert(1);
+    }
+    100% {
+      filter: brightness(normal) invert(0);
+    }
+  }
+}
