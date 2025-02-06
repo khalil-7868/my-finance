@@ -1,3 +1,9 @@
+'use client';
+
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from 'react';
+
 import Image from 'next/image';
 
 import { ChevronRight } from 'components/icons/chevron-right';
@@ -13,6 +19,8 @@ import { Button } from 'components/ui/Button';
 import bgshapes from './bg-shapes.png';
 import hero_demo from './hero-demo.png';
 import { LineShapes } from './line-shapes';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const features = [
   {
@@ -34,6 +42,49 @@ const features = [
 ];
 
 export function Hero() {
+  const imageRef = useRef(null);
+  const demoRef = useRef(null);
+
+  useEffect(() => {
+    if (!imageRef.current) return; // Ensure the ref exists
+    if (!demoRef.current) return;
+
+    gsap.fromTo(
+      imageRef.current,
+      { scale: 1, opacity: 1 }, // Initial scale (normal size)
+      {
+        scale: 1.4, // Zoom in to 1.5x size
+        opacity: 0.1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: imageRef.current,
+          start: '0 0', // Start zooming when image enters viewport
+          end: 'bottom 500', // End zoom when it reaches the center
+          scrub: true // Smooth scrolling effect
+        }
+      }
+    );
+
+    gsap.fromTo(
+      demoRef.current,
+      {
+        // filter: 'brightness(0%)'
+        opacity: 0.5
+      },
+      {
+        // filter: 'brightness(100%)',
+        opacity: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: imageRef.current,
+          start: '-100 0', // Start when the image enters viewport
+          end: '800 center', // End when it reaches the center
+          scrub: true, // Smooth transition
+          // markers: true
+        }
+      }
+    );
+  }, []);
   return (
     <section className="relative z-0 overflow-hidden pb-40 pt-20">
       <div className="mx-auto w-full max-w-[1120px]">
@@ -52,10 +103,17 @@ export function Hero() {
         </div>
 
         <div className="h-[593px] w-full rounded-2xl border border-white/[0.08] bg-dark/[0.43] backdrop-blur-[84px]">
-          <Image src={hero_demo} alt="Dashboard" className="w-full object-cover" />
+          <Image
+            src={hero_demo}
+            alt="Dashboard"
+            className="w-full object-cover"
+            ref={demoRef}
+            style={{ transformStyle: 'preserve-3d' }}
+          />
         </div>
       </div>
       <Image
+        ref={imageRef}
         priority
         fetchPriority="high"
         src={bgshapes}
