@@ -15,7 +15,7 @@ import { Logo } from 'components/logo';
 import { Text } from 'components/typography';
 import { Button } from 'components/ui/Button';
 
-import { FianceText } from './fiance-text';
+import { FinanceText } from './finance-text';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,7 +52,7 @@ export function Footer() {
   }, []);
   return (
     <footer>
-      <FianceText ref={elementRef} className="pointer-events-none relative z-0 mx-auto -mb-12" />
+      <FinanceText ref={elementRef} className="pointer-events-none relative z-0 mx-auto -mb-12" />
       <div className="relative z-10 overflow-hidden bg-gradient-to-r from-transparent via-white/[0.03] to-transparent backdrop-blur-[40px]">
         <div className="relative z-0 mx-auto w-full max-w-[1108px] pb-6 pt-14">
           <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />

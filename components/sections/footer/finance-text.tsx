@@ -1,6 +1,6 @@
 import { SVGProps, forwardRef } from 'react';
 
-export const FianceText = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>((props, ref) => (
+export const FinanceText = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>((props, ref) => (
   <svg
     ref={ref}
     width={1126}
@@ -57,3 +57,4 @@ export const FianceText = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>((pr
     </defs>
   </svg>
 ));
+FinanceText.displayName = 'FinanceText';
