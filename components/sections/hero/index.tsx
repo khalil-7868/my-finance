@@ -11,6 +11,7 @@ import { Badge } from 'components/ui/Badge';
 import { Button } from 'components/ui/Button';
 
 import bgshapes from './bg-shapes.png';
+import hero_demo from './hero-demo.png';
 import { LineShapes } from './line-shapes';
 
 const features = [
@@ -50,7 +51,9 @@ export function Hero() {
           </Button>
         </div>
 
-        <div className="h-[593px] w-full rounded-2xl border border-white/[0.08] bg-dark/[0.43] backdrop-blur-[84px]"></div>
+        <div className="h-[593px] w-full rounded-2xl border border-white/[0.08] bg-dark/[0.43] backdrop-blur-[84px]">
+          <Image src={hero_demo} alt="Dashboard" className="w-full object-cover" />
+        </div>
       </div>
       <Image
         priority
