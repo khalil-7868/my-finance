@@ -1,6 +1,58 @@
-import { SVGProps } from 'react';
+'use client';
 
+import { gsap } from 'gsap';
+import { MotionPathPlugin } from 'gsap/all';
+import { type SVGProps, useEffect, useRef } from 'react';
+
+gsap.registerPlugin(MotionPathPlugin);
 export function LineShapesMobile(props: SVGProps<SVGSVGElement>) {
+  const circleRefs = useRef<(SVGRectElement | null)[]>([]);
+  const circleRefs2 = useRef<(SVGRectElement | null)[]>([]);
+  const pathRef = useRef<SVGPathElement>(null);
+  const pathRef2 = useRef<SVGPathElement>(null);
+
+  useEffect(() => {
+    if (pathRef.current) {
+      circleRefs.current.forEach((circle, index) => {
+        if (circle) {
+          // animateCircle(circle, pathRef.current!, index * 0.02)
+          gsap.to(circle, {
+            duration: 10,
+            delay: index * 0.015,
+            repeat: -1,
+            ease: 'linear',
+            yoyo: true,
+            motionPath: {
+              path: pathRef.current,
+              align: pathRef.current,
+              autoRotate: true,
+              alignOrigin: [0.5, 0.5]
+            } as any
+          });
+        }
+      });
+
+      circleRefs2.current.forEach((circle, index) => {
+        if (circle) {
+          // animateCircle(circle, pathRef.current!, index * 0.02)
+          gsap.to(circle, {
+            duration: 10,
+            delay: index * 0.015,
+            repeat: -1,
+            ease: 'linear',
+            yoyo: true,
+            motionPath: {
+              path: pathRef2.current,
+              align: pathRef2.current,
+              autoRotate: true,
+              alignOrigin: [0.5, 0.5]
+            } as any // Type assertion to avoid TS error
+          });
+        }
+      });
+    }
+  }, []);
+
   return (
     <svg
       width={358}
@@ -19,12 +71,22 @@ export function LineShapesMobile(props: SVGProps<SVGSVGElement>) {
         strokeWidth={0.619048}
       />
       <circle
-        cx={179}
-        cy={227}
-        r={25.6905}
-        stroke="url(#paint0_angular_2056_5)"
-        strokeWidth={0.619048}
-      />
+        cx="179"
+        cy="227"
+        r="25.5"
+        stroke="url(#paint0_linear_2056_5)"
+        fill="none"
+        strokeWidth="1"
+      >
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from="0 179 227"
+          to="360 179 227"
+          dur="4s"
+          repeatCount="indefinite"
+        />
+      </circle>
       <g filter="url(#filter0_i_2056_5)">
         <rect
           x={156.714}
@@ -55,11 +117,13 @@ export function LineShapesMobile(props: SVGProps<SVGSVGElement>) {
         />
       </g>
       <path
+        ref={pathRef}
         d="M0.5 0V95C0.5 106.046 9.45431 115 20.5 115H102.178C104.972 115 107.677 115.974 109.829 117.755L145.651 147.401C148.405 149.68 150 153.07 150 156.645V226.5"
         stroke="url(#paint2_linear_2056_5)"
         strokeOpacity={0.08}
       />
       <path
+        ref={pathRef2}
         d="M357.5 0V95C357.5 106.046 348.546 115 337.5 115H255.822C253.028 115 250.323 115.974 248.171 117.755L212.349 147.401C209.595 149.68 208 153.07 208 156.645V226.5"
         stroke="url(#paint3_linear_2056_5)"
         strokeOpacity={0.08}
@@ -69,6 +133,28 @@ export function LineShapesMobile(props: SVGProps<SVGSVGElement>) {
         stroke="white"
         strokeOpacity={0.08}
       />
+      {Array.from({ length: 80 }).map((_, index) => (
+        <rect
+          key={index}
+          width="1"
+          height="1"
+          rx="1"
+          opacity={1 - index / 80}
+          fill="#DB3937"
+          ref={(el) => (circleRefs.current[index] = el)}
+        />
+      ))}
+      {Array.from({ length: 80 }).map((_, index) => (
+        <rect
+          key={index}
+          width="1"
+          height="1"
+          rx="1"
+          opacity={1 - index / 80}
+          fill="#DB3937"
+          ref={(el) => (circleRefs2.current[index] = el)}
+        />
+      ))}
       <g filter="url(#filter1_b_2056_5)">
         <rect x={172} y={312} width={14} height={23} rx={7} fill="white" fillOpacity={0.02} />
         <rect
@@ -130,18 +216,18 @@ export function LineShapesMobile(props: SVGProps<SVGSVGElement>) {
             result="shape"
           />
         </filter>
-        <radialGradient
-          id="paint0_angular_2056_5"
-          cx={0}
-          cy={0}
-          r={1}
+        <linearGradient
+          id="paint0_linear_2056_5"
+          x1={189.195}
+          y1={202.46}
+          x2={179.716}
+          y2={216.479}
           gradientUnits="userSpaceOnUse"
-          gradientTransform="translate(179 227) rotate(-90) scale(20.7381)"
         >
-          <stop stopColor="#F85250" />
-          <stop offset={0.449498} stopColor="#F85250" stopOpacity={0} />
-          <stop offset={1} stopColor="#F85250" stopOpacity={0} />
-        </radialGradient>
+          <stop stopColor="#DB3937" />
+          <stop offset={0.49} stopColor="#DB3937" stopOpacity={0} />
+          <stop offset={0.49} stopColor="#DB3937" stopOpacity={0} />
+        </linearGradient>
         <linearGradient
           id="paint1_linear_2056_5"
           x1={179}
