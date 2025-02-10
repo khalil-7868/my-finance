@@ -46,26 +46,28 @@ const pricing_features = [
 
 export function Pricing() {
   return (
-    <section id="pricing">
-      <div className="relative z-0 mx-auto w-full max-w-[818px] pb-15 pt-[454px]">
+    <section className="overflow-hidden px-9" id="pricing">
+      <div className="relative z-0 mx-auto w-full max-w-[818px] pb-15 pt-60 sm:pt-[380px] md:pt-[454px]">
         <Image
           src={pricing_shape}
           alt="gradient shape"
-          className="pointer-events-none absolute left-0 top-0 -z-10 w-full object-contain object-bottom"
+          className="pointer-events-none absolute left-1/2 top-0 -z-10 w-[437px] max-w-none -translate-x-1/2 object-contain object-bottom sm:w-full"
         />
 
-        <div className="mx-auto mb-15 w-full max-w-[615px] space-y-4 text-center">
-          <H2>
-            Enjoy all features <br /> at a fixed monthly price
-          </H2>
-          <Text>
-            Simple and transparent pricing structure that allows you to take control of your money
-            and make manage it smartly
-          </Text>
+        <div className="-mx-4 sm:mx-0">
+          <div className="mx-auto mb-15 w-full max-w-[615px] space-y-4 text-center">
+            <H2>
+              Enjoy all features <br /> at a fixed monthly price
+            </H2>
+            <Text>
+              Simple and transparent pricing structure that allows you to take control of your money
+              and make manage it smartly
+            </Text>
+          </div>
         </div>
 
-        <div className="relative z-0">
-          <div className="grid grid-cols-2 gap-6">
+        <div className="relative z-0 mx-auto w-fit">
+          <div className="mx-auto grid max-w-[321px] grid-cols-1 gap-8 md:max-w-none md:grid-cols-2 md:gap-6">
             {pricing_features.map((price, index) => (
               <div
                 key={index}
@@ -94,6 +96,7 @@ export function Pricing() {
 
                 <Button
                   className="w-full"
+                  varient={price.highlighted ? 'default' : 'outline'}
                   href="#"
                   icon={{
                     element: ChevronRight,
@@ -112,7 +115,7 @@ export function Pricing() {
                   }}
                 >
                   <p className="mb-4 pb-0.5 text-sm text-white/50">What&lsquo;s included:</p>
-                  <ul className="text-base font-medium leading-[2.125] -tracking-[0.5px]">
+                  <ul className="text-sm font-medium leading-[2.125] -tracking-[0.5px] sm:text-base">
                     {price.included.map((item, index) => (
                       <li key={index} className="flex items-center gap-3">
                         <CheckCircle className="shrink-0 text-primary" />

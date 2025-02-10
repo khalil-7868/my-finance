@@ -1,13 +1,11 @@
 'use client';
 
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
-import { ScrollToPlugin } from 'gsap/all';
-import { progress } from 'motion';
-import { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import ScrollToPlugin from 'gsap/ScrollToPlugin';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import { Fragment, useEffect, useRef, useState } from 'react';
 
 import Image, { StaticImageData } from 'next/image';
-import Link from 'next/link';
 
 import { cn } from 'lib/utils';
 
@@ -21,7 +19,8 @@ import overviewImg from './overview.png';
 import tangible from './tangible.png';
 import transitions from './transitions.png';
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+// Register GSAP Plugins
+// gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const features: Feature[] = [
   {
@@ -95,25 +94,35 @@ export function OurFeatures() {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: pinnedRef.current,
-        start: '80 top',
-        end: '+=1000px',
-        pin: true,
-        pinSpacing: true,
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+    const mm = gsap.matchMedia();
 
-        // markers: true,
-        onUpdate: (self) => {
-          console.log(self);
-          let progress = self.progress * 100;
-          let index = Math.min(Math.floor(progress / (100 / features.length)), features.length - 1);
-          setSelectedFeature(features[index]);
-        }
+    let ctx = gsap.context(() => {
+      mm.add('(min-width: 1024px)', (context) => {
+        let trigger = ScrollTrigger.create({
+          trigger: pinnedRef.current,
+          start: '80 top',
+          end: '+=1000px',
+          pin: true,
+          pinSpacing: true,
+          onUpdate: (self) => {
+            let progress = self.progress * 100;
+            let index = Math.min(
+              Math.floor(progress / (100 / features.length)),
+              features.length - 1
+            );
+            setSelectedFeature(features[index]);
+          }
+        });
+
+        return () => trigger.kill(); // Cleanup
       });
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert(); // Cleanup GSAP context
+      mm.revert(); // Cleanup matchMedia
+    };
   }, []);
 
   const changeTabs = (feature: Feature) => {
@@ -121,12 +130,12 @@ export function OurFeatures() {
   };
 
   return (
-    <section className="relative z-0 pb-[138px] pt-[120px]" ref={pinnedRef}>
+    <section className="relative z-0 px-5 pb-[138px] pt-[120px]" ref={pinnedRef}>
       {/* Content */}
       <div className="mx-auto w-full max-w-[1120px]">
         {/* Header */}
         <div className="mx-auto mb-15 w-full max-w-[543px] text-center">
-          <FeaturesShape className="pointer-events-none mx-auto -mb-12 w-fit" />
+          <FeaturesShape className="pointer-events-none mx-auto -mb-14 w-full max-w-[423px] sm:-mb-11 md:w-fit md:max-w-none" />
           <H2>Explore our features</H2>
           <Text className="mt-4">
             Checkout what the users have to say about their experience with MyFinance
@@ -134,7 +143,7 @@ export function OurFeatures() {
         </div>
 
         {/* Tabs */}
-        <div className="flex rounded-[20px] border border-white/[0.04]">
+        <div className="hidden rounded-[20px] border border-white/[0.04] lg:flex">
           <div className="-my-px -ml-px w-full max-w-[420px] -space-y-px">
             {features.map((feature, index) => (
               <div
@@ -207,6 +216,43 @@ export function OurFeatures() {
               />
             </MacWindow>
           </div>
+        </div>
+
+        {/* {Mobile Data} */}
+        <div className="space-y-6 lg:hidden">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="rounded-xl border border-white/[0.04] bg-dark px-4 pt-4 backdrop-blur-2xl"
+            >
+              <h4 className="mb-2 text-base font-medium -tracking-[0.01em] text-primary">
+                {feature.label}
+              </h4>
+              <Text className="mb-3">{feature.tagline}</Text>
+              <ul className="mb-7 space-y-2">
+                {feature.list.map((item, index) => (
+                  <li
+                    key={index}
+                    className='relative z-0 pl-3.5 text-sm leading-4 -tracking-[0.5px] before:pointer-events-none before:absolute before:left-0 before:top-1/2 before:size-1.5 before:-translate-y-1/2 before:rounded-full before:border-half before:border-white/20 before:bg-gradient-to-b before:from-[#DB3937] before:to-[#A80C0A] before:content-[""]'
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <MacWindow>
+                <div className="relative z-0 overflow-hidden">
+                  <Image src={feature.content} alt={feature.label} className="-mb-16 w-full" />
+                  <div
+                    className="absolute inset-x-0 bottom-0 h-[57px]"
+                    style={{
+                      background: 'linear-gradient(180deg, rgba(12, 12, 22, 0) 0%, #0C0C16 100%)'
+                    }}
+                  />
+                </div>
+              </MacWindow>
+            </div>
+          ))}
         </div>
       </div>
 

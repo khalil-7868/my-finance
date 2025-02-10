@@ -6,6 +6,7 @@ import { useEffect, useRef } from 'react';
 
 import Link from 'next/link';
 
+import { FooterAccordion } from 'components/footer-accordion';
 import { Discord } from 'components/icons/discord';
 import { Facebook } from 'components/icons/facebook';
 import { Instagram } from 'components/icons/instagram';
@@ -52,19 +53,22 @@ export function Footer() {
   }, []);
   return (
     <footer>
-      <FinanceText ref={elementRef} className="pointer-events-none relative z-0 mx-auto -mb-12" />
-      <div className="relative z-10 overflow-hidden bg-gradient-to-r from-transparent via-white/[0.03] to-transparent backdrop-blur-[40px]">
+      <FinanceText
+        ref={elementRef}
+        className="pointer-events-none relative z-0 mx-auto -mb-12 w-full px-6"
+      />
+      <div className="relative z-10 overflow-hidden bg-gradient-to-r from-transparent via-white/[0.03] to-transparent px-5 backdrop-blur-[40px] md:px-8">
         <div className="relative z-0 mx-auto w-full max-w-[1108px] pb-6 pt-14">
           <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
-          <div className="flex items-center justify-between gap-10">
-            <div className="w-full max-w-[287px]">
-              <Link href="/" className="mb-8 block w-fit">
+          <div className="flex flex-col items-center justify-between gap-12 md:flex-row md:gap-10">
+            <div className="w-full md:max-w-[287px]">
+              <Link href="/" className="mb-9 block w-fit md:mb-8">
                 <Logo className="h-fit w-[122px]" />
               </Link>
               <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</Text>
             </div>
-            <div className="flex w-full max-w-[646px] items-start justify-between gap-10">
+            <div className="hidden w-full flex-col items-start justify-between gap-10 sm:flex sm:flex-row md:max-w-[646px]">
               <div className="w-[72px]">
                 <Text className="mb-7 font-medium text-white">Navigation</Text>
                 <ul className="space-y-4">
@@ -183,22 +187,52 @@ export function Footer() {
                 </ul>
               </div>
             </div>
+            <div className="w-full divide-y divide-white/25 border-b border-white/25">
+              <FooterAccordion
+                title="Navigation"
+                list={[
+                  { label: 'Features', href: '#' },
+                  { label: 'About Us', href: '#' },
+                  { label: 'Security', href: '#' }
+                ]}
+              />
+              <FooterAccordion
+                title="Getting Started"
+                list={[
+                  { label: 'Features', href: '#' },
+                  { label: 'About Us', href: '#' },
+                  { label: 'Security', href: '#' }
+                ]}
+              />
+              <FooterAccordion
+                social
+                title="Social"
+                list={[
+                  { label: Linkedin, href: '#' },
+                  { label: Instagram, href: '#' },
+                  { label: X, href: '#' },
+                  { label: Facebook, href: '#' },
+                  { label: Discord, href: '#' }
+                ]}
+              />
+            </div>
           </div>
 
-          <div className="mb-9 mt-20 h-px w-full bg-white/[.24]" />
+          <div className="mb-9 mt-20 hidden h-px w-full bg-white/[.24] md:block" />
 
-          <div className="flex items-center justify-between gap-10">
-            <div className="w-full max-w-[319px]">
-              <p className="mb-4 pb-0.5 text-xl font-medium -tracking-[1.92%]">
+          <div className="mt-9 flex flex-col justify-between gap-7 md:mt-0 md:flex-row md:items-center md:gap-10">
+            <div className="w-full md:max-w-[319px]">
+              <p className="mb-4 pb-0.5 text-base font-medium -tracking-[1.92%] text-white md:text-xl">
                 Subscribe to our Newsletter
               </p>
               <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</Text>
             </div>
-            <div className="w-full max-w-[400px]">
+            <div className="w-full md:max-w-[400px]">
               <div className="mb-4 flex items-center gap-3">
                 <input
                   type="email"
-                  className="block h-10 flex-1 rounded-lg border border-white/[0.12] bg-white/[0.02] px-4 text-white"
+                  className="block h-10 w-full flex-1 rounded-lg border border-white/[0.12] bg-white/[0.02] px-4 text-white"
+                  placeholder="Enter email id..."
                 />
                 <Button className="h-10 px-6">Subscribe</Button>
               </div>
@@ -213,9 +247,9 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="mb-9 mt-20 h-px w-full bg-white/[.24]" />
+          <div className="mb-9 mt-9 h-px w-full bg-white/[.24] md:mt-20" />
 
-          <div className="flex items-center justify-between gap-10">
+          <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center md:gap-10">
             <p className="text-xs text-white/50">
               Copyright &copy; {new Date().getFullYear()} MyFinance. All rights reserved.
             </p>

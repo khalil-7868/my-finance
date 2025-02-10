@@ -17,7 +17,7 @@ export function H1({ children, className }: Props) {
   return (
     <h1
       className={cn(
-        'bg-cover bg-clip-text bg-center bg-no-repeat text-[64px] font-bold leading-[1.125] -tracking-[0.96px] text-transparent',
+        'bg-cover bg-clip-text bg-center bg-no-repeat text-[40px] font-bold leading-[1.3] -tracking-[0.015em] text-transparent md:text-[64px] md:leading-[1.125] md:-tracking-[0.96px]',
         className
       )}
       style={{ backgroundImage: 'linear-gradient(180deg, #DDDDE5 0%, #C7C7D3 100%)' }}
@@ -31,7 +31,7 @@ export function H2({ children, className }: Props) {
   return (
     <h2
       className={cn(
-        'bg-cover bg-clip-text bg-center bg-no-repeat text-5xl font-semibold leading-[1.1] -tracking-[1.92px] text-transparent',
+        'bg-cover bg-clip-text bg-center bg-no-repeat text-4xl font-semibold leading-[1.1] -tracking-[1px] text-transparent md:text-5xl md:-tracking-[1.92px]',
         className
       )}
       style={{ backgroundImage: 'linear-gradient(180deg, #DDDDE5 0%, #C7C7D3 100%)' }}
@@ -46,7 +46,7 @@ export function Text({ children, className, size = 'medium' }: TextProps) {
     <p
       className={cn(
         'text-light opacity-95',
-        size === 'medium' && 'text-base leading-[1.56] -tracking-[0.5px]',
+        size === 'medium' && 'text-sm leading-[1.56] -tracking-[0.5px] md:text-base',
         size === 'small' && 'text-sm leading-[1.6429]',
         className
       )}

@@ -1,7 +1,7 @@
 'use client';
 
 import type React from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 
 type GradientDirection = 'to right' | 'to bottom' | 'to bottom right' | 'to top right';
 
@@ -50,8 +50,8 @@ export const SVGBorder: React.FC<SVGBorderProps> = ({
     return () => window.removeEventListener('resize', updateDimensions);
   }, [offset]);
 
-  const fillGradientId = `fill-gradient-${Math.random().toString(36).substr(2, 9)}`;
-  const borderGradientId = `border-gradient-${Math.random().toString(36).substr(2, 9)}`;
+  const fillGradientId = useId();
+  const borderGradientId = useId();
 
   const getGradientCoords = (direction: GradientDirection) => {
     switch (direction) {
@@ -94,8 +94,8 @@ export const SVGBorder: React.FC<SVGBorderProps> = ({
         <rect
           x="0.5"
           y="0.5"
-          width={dimensions.width - 1}
-          height={dimensions.height - 1}
+          width={Math.max(1, dimensions.width - 1)}
+          height={Math.max(1, dimensions.height - 1)}
           fill={fillGradient ? `url(#${fillGradientId})` : 'none'}
           stroke={borderGradient ? `url(#${borderGradientId})` : borderColor || 'black'}
           strokeWidth={borderWidth}

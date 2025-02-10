@@ -35,6 +35,9 @@ module.exports = {
       spacing: {
         15: '60px'
       },
+      borderWidth: {
+        half: '0.5px'
+      },
       fontFamily: {
         serif: ['var(--font-britti-sans)', ...fontFamily.sans],
         sans: ['var(--font-inter)', ...fontFamily.sans]

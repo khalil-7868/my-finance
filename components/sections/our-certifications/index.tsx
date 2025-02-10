@@ -4,6 +4,7 @@ import { SVGBorder } from 'components/svg-border';
 import { H2, Text } from 'components/typography';
 
 import { CertificationShape } from './certification-shape';
+import { CertificationShapeMobile } from './certification-shape-mobile';
 import fox_certificate from './fox-certification.png';
 import green_electricity from './green-electricity.png';
 import psd2 from './psd2.png';
@@ -25,11 +26,12 @@ const certificates = [
 
 export function OurCertifications() {
   return (
-    <section className="relative z-0 pt-5">
+    <section className="relative z-0 overflow-hidden px-5 pt-5">
       {/* Content */}
       <div className="mx-auto w-full max-w-[1120px]">
         {/* Header */}
-        <CertificationShape className="pointer-events-none mx-auto -mb-[4.5rem] w-fit" />
+        <CertificationShape className="pointer-events-none mx-auto -mb-[4.5rem] hidden w-full md:block lg:w-fit" />
+        <CertificationShapeMobile className="pointer-events-none mx-auto -mb-6 w-full scale-110 md:hidden" />
         <div className="mx-auto mb-15 w-full max-w-[598px] text-center">
           <H2>Our certifications</H2>
           <Text className="mt-4">
@@ -39,7 +41,7 @@ export function OurCertifications() {
           </Text>
         </div>
 
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {certificates.map((certificate, index) => (
             <SVGBorder
               key={index}

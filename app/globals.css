@@ -22,7 +22,7 @@
   .anim-pop {
     animation: 0.6s pop;
     animation-fill-mode: forwards;
-    background-color: #ffffff0f;
+    background: rgba(219,57,55,.4);
   }
 
   @keyframes pop {

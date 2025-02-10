@@ -17,8 +17,10 @@ import { Badge } from 'components/ui/Badge';
 import { Button } from 'components/ui/Button';
 
 import bgshapes from './bg-shapes.png';
+import hero_demo_mobile from './hero-demo-mobile.png';
 import hero_demo from './hero-demo.png';
 import { LineShapes } from './line-shapes';
+import { LineShapesMobile } from './line-shapes-mobile';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -68,32 +70,32 @@ export function Hero() {
     gsap.fromTo(
       demoRef.current,
       {
-        // filter: 'brightness(0%)'
+        filter: 'brightness(90%)',
         opacity: 0.5
       },
       {
-        // filter: 'brightness(100%)',
         opacity: 1,
+        filter: 'brightness(125%)',
         ease: 'power2.out',
         scrollTrigger: {
           trigger: imageRef.current,
           start: '-100 0', // Start when the image enters viewport
           end: '800 center', // End when it reaches the center
-          scrub: true, // Smooth transition
+          scrub: true // Smooth transition
           // markers: true
         }
       }
     );
   }, []);
   return (
-    <section className="relative z-0 overflow-hidden pb-40 pt-20">
-      <div className="mx-auto w-full max-w-[1120px]">
-        <div className="mx-auto mb-15 w-full max-w-[744px]">
+    <section className="relative z-0 overflow-hidden px-[22px] pb-40 pt-20 sm:px-10">
+      <div className="mx-auto w-full max-w-[348px] md:max-w-[1120px]">
+        <div className="mx-auto mb-20 w-full max-w-[352px] md:mb-15 md:max-w-[744px]">
           <Badge icon={{ position: 'left', element: Stars }} center>
             All Finances in one place
           </Badge>
           <H1 className="mb-4 mt-3 text-center">Manage Finances, Plan Future, Build Wealth</H1>
-          <Text className="mx-auto mb-10 max-w-[568px] text-center">
+          <Text className="mx-auto mb-11 max-w-[568px] text-center md:mb-10">
             Effortlessly manage your money, plan ahead with confidence, and grow your wealth using
             smart, intuitive tools—all in one secure platform.
           </Text>
@@ -102,14 +104,23 @@ export function Hero() {
           </Button>
         </div>
 
-        <div className="h-[593px] w-full rounded-2xl border border-white/[0.08] bg-dark/[0.43] backdrop-blur-[84px]">
-          <Image
-            src={hero_demo}
-            alt="Dashboard"
-            className="w-full object-cover"
-            ref={demoRef}
-            style={{ transformStyle: 'preserve-3d' }}
-          />
+        <div className="px-1 xl:px-0">
+          <div className="w-full rounded-2xl border border-white/[0.08] bg-dark/[0.43] backdrop-blur-[84px]">
+            <div className="opacity-50 brightness-90" ref={demoRef}>
+              <Image
+                src={hero_demo}
+                alt="Dashboard"
+                priority
+                className="hidden w-full rounded-2xl object-cover md:block"
+              />
+              <Image
+                src={hero_demo_mobile}
+                alt="Dashboard"
+                priority
+                className="w-full rounded-2xl object-cover md:hidden"
+              />
+            </div>
+          </div>
         </div>
       </div>
       <Image
@@ -118,13 +129,14 @@ export function Hero() {
         fetchPriority="high"
         src={bgshapes}
         alt="Shapes"
-        className="pointer-events-none absolute left-1/2 top-[74px] -z-20 -translate-x-1/2"
+        className="pointer-events-none absolute left-1/2 top-1/4 -z-20 max-w-[380px] -translate-x-1/2 sm:w-auto sm:max-w-full md:top-[74px]"
       />
 
       <div className="relative z-0">
-        <LineShapes className="pointer-evednts-none left-0 -mt-[97px] w-full " />
+        <LineShapes className="pointer-evednts-none left-0 -mt-[97px] hidden w-full md:block" />
+        <LineShapesMobile className="pointer-evednts-none left-0 -mt-[97px] block w-full md:hidden" />
 
-        <div className="mx-auto -mt-2.5 grid max-w-[1116px] grid-cols-3 gap-[25px]">
+        <div className="mx-auto -mt-3.5 grid max-w-[1116px] grid-cols-1 items-start gap-[25px] sm:-mt-2.5 md:-mt-15 md:grid-cols-3 lg:-mt-2.5">
           {features.map((feature, index) => (
             <SVGBorder
               key={index}
