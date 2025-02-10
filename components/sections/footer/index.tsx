@@ -187,7 +187,7 @@ export function Footer() {
                 </ul>
               </div>
             </div>
-            <div className="w-full divide-y divide-white/25 border-b border-white/25">
+            <div className="w-full divide-y divide-white/25 border-b border-white/25 sm:hidden">
               <FooterAccordion
                 title="Navigation"
                 list={[
