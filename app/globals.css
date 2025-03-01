@@ -18,12 +18,10 @@
 
   --border-width-half: 0.5px;
 
-  --font-serif:
-    var(--font-britti-sans), ui-sans-serif, system-ui, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-sans:
-    var(--font-inter), ui-sans-serif, system-ui, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: var(--font-britti-sans), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
 @utility container {
@@ -70,7 +68,7 @@
   .anim-pop {
     animation: 0.6s pop;
     animation-fill-mode: forwards;
-    background: rgba(219,57,55,.4);
+    background: rgba(219, 57, 55, 0.4);
   }
 
   @keyframes pop {

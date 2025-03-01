@@ -1,7 +1,7 @@
-import { formatDate } from 'lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { formatDate } from 'lib/utils';
 
 export interface ITag {
   id: string;
@@ -22,16 +22,18 @@ export interface IPost {
   reading_time: number;
   tags: ITag[];
   primary_author: {
-    name: string,
-    profile_image: string,
-    bio: string
-  }
+    name: string;
+    profile_image: string;
+    bio: string;
+  };
 }
 
 export default function BlogCard({ data }: { data: IPost }) {
   return (
-
-    <article key={data.id} className="flex hover:ring ring-primary/60 p-1.5 transition-all rounded-[20px] relative z-0 flex-col items-start">
+    <article
+      key={data.id}
+      className="flex hover:ring ring-primary/60 p-1.5 transition-all rounded-[20px] relative z-0 flex-col items-start"
+    >
       <div className="relative w-full aspect-video rounded-2xl bg-gray-100 object-cover sm:aspect-2/1 lg:aspect-3/2 overflow-hidden">
         {data.feature_image ? (
           <Image
@@ -64,12 +66,15 @@ export default function BlogCard({ data }: { data: IPost }) {
 
           <div className="ml-5 flex flex-wrap items-center space-x-4 text-xs">
             {data.tags.map((tag, idx) => (
-              <Link className="relative z-20 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100" key={idx} href={`/tags/${tag.slug}`}>
+              <Link
+                className="relative z-20 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
+                key={idx}
+                href={`/tags/${tag.slug}`}
+              >
                 {tag.name}
               </Link>
             ))}
           </div>
-
         </div>
         <div className="group relative">
           <h3 className="mt-5 text-lg/6 h-12 line-clamp-2 font-semibold text-white group-hover:text-primary">
@@ -81,8 +86,17 @@ export default function BlogCard({ data }: { data: IPost }) {
           <p className="mt-5 line-clamp-3 text-sm/6 text-white/60">{data.excerpt}</p>
         </div>
         <div className="relative mt-8 flex items-center gap-x-4">
-          {data.primary_author.profile_image ?
-            <Image alt={data.primary_author.name} src={data.primary_author.profile_image} width={120} height={120} className="size-10 rounded-full bg-gray-100" /> : <div className='rounded-full size-10 bg-gray-400' />}
+          {data.primary_author.profile_image ? (
+            <Image
+              alt={data.primary_author.name}
+              src={data.primary_author.profile_image}
+              width={120}
+              height={120}
+              className="size-10 rounded-full bg-gray-100"
+            />
+          ) : (
+            <div className="rounded-full size-10 bg-gray-400" />
+          )}
           <div className="text-sm/6">
             <p className="font-semibold text-white/60">
               <span className="absolute inset-0" />
@@ -92,7 +106,7 @@ export default function BlogCard({ data }: { data: IPost }) {
           </div>
         </div>
       </div>
-      <Link href={`/blog/${data.slug}`}  className='absolute inset-0 z-10'/>
+      <Link href={`/blog/${data.slug}`} className="absolute inset-0 z-10" />
     </article>
   );
 }

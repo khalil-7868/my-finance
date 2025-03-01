@@ -1,5 +1,3 @@
 export function Heart() {
-    return (
-        <div>Heart</div>
-    )
+  return <div>Heart</div>;
 }
