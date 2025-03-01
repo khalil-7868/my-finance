@@ -18,7 +18,7 @@ export function Cta() {
         <div className="pb-10 pt-24 md:pb-[54px] md:pt-15">
           <div className="relative z-0 mx-auto w-full max-w-[732px]">
             <Badge
-              className="mb-3 ml-1 hidden h-[25px] items-center gap-2 rounded bg-white/[0.04] px-1.5 text-xs tracking-[0.02em] text-white md:flex"
+              className="mb-3 ml-1 hidden h-[25px] items-center gap-2 rounded-sm bg-white/[0.04] px-1.5 text-xs tracking-[0.02em] text-white md:flex"
               icon={{ element: GridLayout, position: 'left' }}
             >
               The place for your finances
@@ -36,7 +36,7 @@ export function Cta() {
                 <H1 className="mb-4 -tracking-[1.92px]">
                   Start your{' '}
                   <span className="relative z-0 px-1 pb-0.5 pt-1.5">
-                    <span className="bg-gradient-to-r from-[#DB3738] via-[#DB3768] to-[#DB3768] bg-clip-text text-transparent">
+                    <span className="bg-linear-to-r from-[#DB3738] via-[#DB3768] to-[#DB3768] bg-clip-text text-transparent">
                       money
                     </span>
                     <Image
@@ -66,7 +66,7 @@ export function Cta() {
         <Image
           src={gradient}
           alt="Gradient"
-          className="pointer-events-none absolute left-1/2 top-0 -z-20 mx-auto w-full max-w-[695px] origin-top -translate-x-2/3 scale-[2] md:-translate-x-1/2 md:scale-100"
+          className="pointer-events-none absolute left-1/2 top-0 -z-20 mx-auto w-full max-w-[695px] origin-top -translate-x-2/3 scale-2 md:-translate-x-1/2 md:scale-100"
         />
       </div>
     </section>

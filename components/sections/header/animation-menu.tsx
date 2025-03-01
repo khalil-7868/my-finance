@@ -72,7 +72,7 @@ export default function AnimatedMenu({ navigation, isOpen }: Props) {
                 }}
               >
                 <span className="w-10 text-right">{(index + 1).toString().padStart(2, '0')}</span>
-                <div className="h-0.5 w-10 rounded bg-white/50" />
+                <div className="h-0.5 w-10 rounded-sm bg-white/50" />
                 <span className="">{item.label}</span>
               </Link>
             </li>

@@ -151,7 +151,7 @@ export function OurFeatures() {
                 onClick={() => changeTabs(feature)}
                 aria-checked={selectedFeature.label === feature.label}
                 className={cn(
-                  'relative z-0 cursor-pointer overflow-hidden border border-white/[0.04] bg-dark py-5 pl-6 pr-10 transition-all first:rounded-tl-[20px] last:rounded-bl-[20px] hover:bg-primary/5 hover:backdrop-blur aria-checked:hover:bg-dark',
+                  'relative z-0 cursor-pointer overflow-hidden border border-white/[0.04] bg-dark py-5 pl-6 pr-10 transition-all first:rounded-tl-[20px] last:rounded-bl-[20px] hover:bg-primary/5 hover:backdrop-blur-sm aria-checked:hover:bg-dark',
                   selectedFeature.label === feature.label && 'group'
                 )}
               >
@@ -233,7 +233,7 @@ export function OurFeatures() {
                 {feature.list.map((item, index) => (
                   <li
                     key={index}
-                    className='relative z-0 pl-3.5 text-sm leading-4 -tracking-[0.5px] before:pointer-events-none before:absolute before:left-0 before:top-1/2 before:size-1.5 before:-translate-y-1/2 before:rounded-full before:border-half before:border-white/20 before:bg-gradient-to-b before:from-[#DB3937] before:to-[#A80C0A] before:content-[""]'
+                    className='relative z-0 pl-3.5 text-sm leading-4 -tracking-[0.5px] before:pointer-events-none before:absolute before:left-0 before:top-1/2 before:size-1.5 before:-translate-y-1/2 before:rounded-full before:border-half before:border-white/20 before:bg-linear-to-b before:from-[#DB3937] before:to-[#A80C0A] before:content-[""]'
                   >
                     {item}
                   </li>
@@ -259,7 +259,7 @@ export function OurFeatures() {
       {/* Backgrounds */}
       <div className="pointer-events-none absolute inset-0 -z-10 size-full overflow-auto">
         {/* Line */}
-        <div className="pointer-events-none absolute left-1/2 top-0 h-px w-full max-w-[1160px] -translate-x-1/2 bg-gradient-to-r from-transparent via-primary/60 to-transparent [--tw-gradient-from-position:20%] [--tw-gradient-to-position:80%]" />
+        <div className="pointer-events-none absolute left-1/2 top-0 h-px w-full max-w-[1160px] -translate-x-1/2 bg-linear-to-r from-transparent via-primary/60 to-transparent [--tw-gradient-from-position:20%] [--tw-gradient-to-position:80%]" />
 
         {/* CircleShape */}
         <div

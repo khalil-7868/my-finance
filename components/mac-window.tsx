@@ -19,7 +19,7 @@ export function MacWindow(props: Props) {
       borderRadius={20}
       className={cn(props.className)}
     >
-      <div className="rounded-[20px] bg-gradient-to-b from-white/[0.03] to-transparent p-1">
+      <div className="rounded-[20px] bg-linear-to-b from-white/[0.03] to-transparent p-1">
         <SVGBorder
           borderGradient={['#ffffff14', 'transparent']}
           borderGradientDirection="to bottom"

@@ -55,7 +55,7 @@ export function FooterAccordion(props: Props) {
         <span>{title}</span>
         <div
           ref={iconRef}
-          className="flex size-[17px] shrink-0 items-center justify-center rounded border border-white/[0.12] bg-white/[0.02]"
+          className="flex size-[17px] shrink-0 items-center justify-center rounded-sm border border-white/[0.12] bg-white/[0.02]"
         >
           {openAcc ? <Minus /> : <Plus />}
         </div>

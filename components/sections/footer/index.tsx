@@ -57,9 +57,9 @@ export function Footer() {
         ref={elementRef}
         className="pointer-events-none relative z-0 mx-auto -mb-12 w-full px-6"
       />
-      <div className="relative z-10 overflow-hidden bg-gradient-to-r from-transparent via-white/[0.03] to-transparent px-5 backdrop-blur-[40px] md:px-8">
+      <div className="relative z-10 overflow-hidden bg-linear-to-r from-transparent via-white/[0.03] to-transparent px-5 backdrop-blur-[40px] md:px-8">
         <div className="relative z-0 mx-auto w-full max-w-[1108px] pb-6 pt-14">
-          <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+          <div className="absolute left-0 right-0 top-0 h-px bg-linear-to-r from-transparent via-white/30 to-transparent" />
 
           <div className="flex flex-col items-center justify-between gap-12 md:flex-row md:gap-10">
             <div className="w-full md:max-w-[287px]">
@@ -265,9 +265,9 @@ export function Footer() {
         </div>
 
         {/* <GradientShapes className='absolute bottom-0 left-0 w-full pointer-events-none -z-10'/> */}
-        <div className="pointer-events-none absolute left-0 top-full -z-10 h-[391px] w-[970px] -translate-y-16 transform-gpu rounded-[100%] bg-gradient-to-r from-transparent via-primary to-[#DA368F] mix-blend-plus-lighter blur-[350px]" />
-        <div className="pointer-events-none absolute left-1/2 top-full -z-10 h-[391px] w-[970px] -translate-x-1/2 -translate-y-16 transform-gpu rounded-[100%] bg-gradient-to-r from-transparent via-primary to-[#DA368F] mix-blend-plus-lighter blur-[350px]" />
-        <div className="pointer-events-none absolute right-0 top-full -z-10 h-[391px] w-[970px] -translate-y-16 transform-gpu rounded-[100%] bg-gradient-to-r from-transparent via-primary to-primary mix-blend-plus-lighter blur-[350px]" />
+        <div className="pointer-events-none absolute left-0 top-full -z-10 h-[391px] w-[970px] -translate-y-16 transform-gpu rounded-[100%] bg-linear-to-r from-transparent via-primary to-[#DA368F] mix-blend-plus-lighter blur-[350px]" />
+        <div className="pointer-events-none absolute left-1/2 top-full -z-10 h-[391px] w-[970px] -translate-x-1/2 -translate-y-16 transform-gpu rounded-[100%] bg-linear-to-r from-transparent via-primary to-[#DA368F] mix-blend-plus-lighter blur-[350px]" />
+        <div className="pointer-events-none absolute right-0 top-full -z-10 h-[391px] w-[970px] -translate-y-16 transform-gpu rounded-[100%] bg-linear-to-r from-transparent via-primary to-primary mix-blend-plus-lighter blur-[350px]" />
       </div>
     </footer>
   );

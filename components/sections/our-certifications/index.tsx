@@ -56,7 +56,7 @@ export function OurCertifications() {
                   className="h-[74px] w-fit object-contain"
                 />
                 <p className="text-balance -tracking-[0.5px]">{certificate.label}</p>
-                <div className="pointer-events-none absolute -inset-20 -z-10 bg-white/[0.02] blur" />
+                <div className="pointer-events-none absolute -inset-20 -z-10 bg-white/[0.02] blur-sm" />
               </div>
             </SVGBorder>
           ))}
